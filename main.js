@@ -39,7 +39,46 @@ totalBalanceElement.innerText = currentTotalBalance;
 
 
 // withdraw js
-
+// step 1: get the button
 document.getElementById('btn-withdraw').addEventListener('click', function(){
-    console.log("withdraw");
+    // step 2: get the input field
+    const withdrawField = document.getElementById('withdraw-amount');
+    const withdrawElement = withdrawField.value;
+    const newWithDrawAmount = parseFloat(withdrawElement);
+
+    // step 3: get the value in withdraw
+
+    const withdrawAmount = document.getElementById('total-withdraw');
+    const withdrawAmountElement = withdrawAmount.innerText;
+    const previousWithdrawAmount = parseFloat(withdrawAmountElement);
+
+
+    // step 5:
+
+    const totalBalance = document.getElementById('total-balance');
+    const totalBalanceValue = totalBalance.innerText;
+    const currentTotalBalance = parseFloat(totalBalanceValue);
+    // step 6: clear the withdraw field 
+    withdrawField.value = '';
+
+    if(newWithDrawAmount > currentTotalBalance){
+        alert('Not Enough Money');
+        return;
+    }
+
+    // step 4: sum the total value of withdraw
+     
+    const totalWithdraw = previousWithdrawAmount + newWithDrawAmount;
+
+    withdrawAmount.innerText = totalWithdraw;
+
+
+// less the total value after withdraw
+    const currentTotal = currentTotalBalance - newWithDrawAmount;
+    totalBalance.innerText = currentTotal;
+
+
+
+    // step 6: clear the withdraw field 
+    withdrawField.value = '';
 })
